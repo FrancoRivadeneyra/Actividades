@@ -40,7 +40,7 @@ bool rectInRect(SDL_Rect rect1, SDL_Rect rect2)
 void buttonMakerDefaultTexture(const char* text, SDL_Color color, int size, SDL_Renderer* m_renderer, Vec2 pos)
 //Just need to renderPresent
 {
-    TTF_Font* defaultFont = TTF_OpenFont(pathFONTdefault, size);
+    TTF_Font* defaultFont = TTF_OpenFont(text, size);
     SDL_Surface* defaultSurface = TTF_RenderText_Solid(defaultFont, text, color);
     SDL_Texture* defaultTexture = SDL_CreateTextureFromSurface(m_renderer, defaultSurface);
     int texW = 0;

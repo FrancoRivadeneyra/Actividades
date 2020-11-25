@@ -26,10 +26,6 @@ Renderer::Renderer()
 
 	//TTF --- INIT ---
 	if (TTF_Init() != 0) throw"No es pot inicialitzar SDL_ttf";
-
-
-
-	LoadScenes();
 	
 };
 
@@ -84,7 +80,6 @@ VEC2 Renderer::GetTextureSize(const std::string &id) {
 	return {w, h};
 };
 
-//Enseñarle a Aniol
 void Renderer::PushImage(const std::string &id, const std::string &idRect) {
 	SDL_RenderCopy(m_renderer, m_textureData[id], nullptr, m_rects[idRect]);
 };
@@ -143,23 +138,25 @@ void Renderer::LoadScenes()
 
 #pragma region FONTS
 		LoadFont({SAYAN_F, pathFONTsaiyan, 72});
-		VEC2 aux = LoadTextureText(SAYAN_F, { "id", { "An SDL project is ready" }, {255,128,0},100,20 }); //falta id, texto color definidos 
-		LoadRect(G_TEXT, { 100, 50, aux.x, aux.y });
+		VEC2 aux2 = LoadTextureText(SAYAN_F, { "id", { "An SDL project is ready" }, {255,128,0},100,20 }); //falta id, texto color definidos 
+		LoadRect(G_TEXT, { 100, 50, aux2.x, aux2.y });
 #pragma endregion
 
 #pragma region AUDIO
-		Mix_Music* soundtrack{ Mix_LoadMUS(pathSOUNDTRACK) };
+		/*
+		Mix_Music* soundtrack{ Mix_LoadMUS(5) };
 		if (!soundtrack)
 			throw "Unable to load soundtrack";
 		Mix_VolumeMusic(MIX_MAX_VOLUME / 2);
 		Mix_PlayMusic(soundtrack, -1);
+		*/
 #pragma endregion
 
-//#pragma region //  --- TIME ---  DELTATIME
-//		clock_t lastTime = clock();
-//		float timeDown = gameTIME; //Timer
-//		float deltaTime = 0;
-//#pragma endregion
+#pragma region //  --- TIME ---  DELTATIME
+		clock_t lastTime = clock();
+		float timeDown = gameTIME; //Timer
+		float deltaTime = 0;
+#pragma endregion
 
 			// --- GAME LOOP ---
 		SDL_Event event;
@@ -183,34 +180,35 @@ void Renderer::LoadScenes()
 
 			// UPDATE
 				//FPS mode
-//			frameTime++;
-//			if (FPS == frameTime) // if (FPS / frameTime <= 9)//9
-//			{
-//				frameTime = 0;
-//				secRect.x -= frameWidth;
-//				if (secRect.x <= 0) { secRect.x = frameWidth * 10; minRect.x -= frameWidth; }
-//			}
-//#pragma region //  --- TIME --- DELTATIME
-//			deltaTime = (clock() - lastTime);
-//			lastTime = clock();
-//			deltaTime /= CLOCKS_PER_SEC;
-//			timeDown -= deltaTime;
-//			if (timeDown == 0) isRunning = false;
-//			std::cout << timeDown << std::endl;
-//#pragma endregion
+			frameTime++;
+			//if (FPS == frameTime) // if (FPS / frameTime <= 9)//9
+			//{
+			//	frameTime = 0;
+			//	secRect.x -= frameWidth;
+			//	if (secRect.x <= 0) { secRect.x = frameWidth * 10; minRect.x -= frameWidth; }
+			//}
+#pragma region //  --- TIME --- DELTATIME
+			deltaTime = (clock() - lastTime);
+			lastTime = clock();
+			deltaTime /= CLOCKS_PER_SEC;
+			timeDown -= deltaTime;
+			if (timeDown == 0) isRunning = false;
+			std::cout << timeDown << std::endl;
+#pragma endregion
 
 			isRunning = escBtn;
 
 		}
-		break;
-	case Renderer::GameState::RANKING:
-		break;
-	case Renderer::GameState::EXIT:
-		break;
-	case Renderer::GameState::MAX:
-	default:
-		break;
+	//	break;
+	//case Renderer::GameState::RANKING:
+	//	break;
+	//case Renderer::GameState::EXIT:
+	//	break;
+	//case Renderer::GameState::MAX:
+	//default:
+	//	break;
 	}
 
 	Render();
+
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include <math.h>
-#include <string.h>
 #include <time.h>
+#include <string>
 
 struct VEC2
 {

@@ -21,5 +21,7 @@ int main(int, char* [])
 
 	Renderer RenderManager;
 
+	RenderManager.LoadScenes();
+
 	return 0;
 }

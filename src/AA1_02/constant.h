@@ -1,4 +1,6 @@
 #pragma once
+#include <map>
+#include <unordered_map>
 
 //Game general information
 #define SCREEN_WIDTH 800
@@ -25,22 +27,33 @@
 #define widthNUM 10
 #define heightNUM 1
 
+typedef std::unordered_map<std::string, SDL_Texture*> MTextures;
+using MRects = std::unordered_map<std::string, SDL_Rect>;
+
 //PATHS
     //Img
-const char* pathBG("../../res/img/bg.jpg");
-const char* pathPLAYER("../../res/img/kintoun.png");
-const char* pathSPRITE("../../res/img/sp01.png");
+const std::string pathBG("../../res/img/bg.jpg");
+const std::string pathPLAYER("../../res/img/kintoun.png");
+const std::string pathSPRITE("../../res/img/sp01.png");
+const std::string pathBGcastle("../../res/img/bgCastle.jpg");
+const std::string pathNUM("../../res/img/num.png");
+const std::string pathSPcastle("../../res/img/spCastle.png");
+const std::string pathGOLD("../../res/img/gold.png");
 
-const char* pathBGcastle("../../res/img/bgCastle.jpg");
-const char* pathNUM("../../res/img/num.png");
-const char* pathSPcastle("../../res/img/spCastle.png");
-const char* pathGOLD("../../res/img/gold.png");
+//////////////////////////////////////////////////////////////////////
+
+const std::string T_BG_MENU = "BackgroundMenu";
+const std::string T_BG_INGAME = "BackgroundInGame";
+const std::string T_CURSOR = "Cursor";
+const std::string T_PLAYERS = "Players";
+const std::string T_GOLD = "Gold";
 
     //Fonts
-const char* pathFONTsaiyan("../../res/ttf/saiyan.ttf");
-const char* pathFONTdefault("../../res/ttf/arial.ttf");
+const std::string pathFONTsaiyan = ("../../res/ttf/saiyan.ttf");
+const std::string pathFONTdefault = ("../../res/ttf/arial.ttf");
+const std::string pathFONTdefault2 = "Sayan";
     //Mix
-const char* pathSOUNDTRACK("../../res/au/mainTheme.mp3");
+const std::string pathSOUNDTRACK("../../res/au/mainTheme.mp3");
 
 //NOMBRE VARIABLES
     //Texturas
